@@ -1,0 +1,98 @@
+<div class="help-div">
+
+  <div class="card">
+    <div class="card-header bg-info">
+      <div class="help_title">
+       Issue Details
+      </div>
+    </div>
+    <div class="card-body">
+      <form #userIssueEntrySubmit="ngForm">
+    <div class="row justify-content-center ">
+      <div class="col-sm-6">
+
+
+
+            <div class="form-group">
+              <label for="label">Issue Type
+                <sup class="text-danger">*</sup>
+              </label>
+              <select
+              class="form-select"
+                (change)="changesType()"
+              name="issueTypeID"
+              [(ngModel)]="issueEntry.issueTypeID"
+            >
+              <option *ngFor="let data of userType" [value]="data.id">
+                {{ data.issueTypeName }}
+              </option>
+            </select>
+
+            </div>
+
+            <div class="form-group" *ngIf="userway">
+              <label for="label">User Name </label>
+              <select
+                class="form-select"
+                name="createdByID"
+
+                (change)="usernameChange($event)"
+                [(ngModel)]="issueEntry.createdByID"
+              >
+                <option  *ngFor="let data of alluserDetails" [value]="data.id">
+                  {{ data.empName
+                  }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="label">System Name </label>
+              <select
+                class="form-select"
+                name="issueItemID"
+                [(ngModel)]="issueEntry.issueItemID">
+
+                <option  *ngFor="let data of systemNames" [value]="data.id">
+                  {{ data.itemName }}
+                </option>
+              </select>
+            </div>
+
+
+
+           <div class="form-group">
+            <label for="label"> Issue Descriptions
+              <sup class="text-danger">*</sup>
+            </label>
+            <textarea   name="issueDescription"
+            [(ngModel)]="issueEntry.issueDescription" class="form-control" rows="5"></textarea>
+           </div>
+
+           <div class="form-group">
+            <label for="label"> Attachment</label>
+            <input type="file" class="form-control" #file id="1" (change)="uploadnewfile(file)" >
+           </div>
+
+           <ul class="list-inline text-right padding">
+            <li class="list-inline-item m_r_25" >
+              <button type="button" class="btn btn-success" (click)="onsubmit(userIssueEntrySubmit)">
+              Submit</button>
+              </li>
+            <li class="list-inline-item">
+
+              <button class="btn btn-danger" (click)="clear()">
+               Clear</button>
+              </li>
+
+
+            </ul>
+
+
+      </div>
+    </div>
+  </form>
+    </div>
+  </div>
+
+</div>

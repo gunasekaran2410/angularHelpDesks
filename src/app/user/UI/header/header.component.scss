@@ -1,0 +1,38 @@
+.icons{
+  font-size: 40px;
+  position: relative;
+  top: 11px;
+}
+.nav-item{
+  margin: 0 10px;
+}
+.p_name{
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0 5px;
+  position: relative;
+  bottom: 8px;
+}
+
+.nav-item a{
+  font-size: 15px;
+  text-transform: uppercase;
+  padding-top: 11px;
+  position: relative;
+  top: 11px;
+  font-weight: 600;
+}
+.navbar-brand{
+  text-transform: uppercase;
+}
+.active-link{
+  background-color: rgb(245, 245, 245);
+  border-radius: 5px;
+
+}
+::ng-deep .menu span{
+  font-size: 21px;
+  margin-right: 12px;
+  position: relative;
+  top: 4px;
+}

@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">HelpDesk</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> -->
+      </ul>
+      <form class="d-flex">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link "  routerLink="/user/issue_entry" routerLinkActive="active-link" aria-current="page" href="#">Issue Entry</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="/user/issue_report" routerLinkActive="active-link">Issue Report</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">
+              <div class="demo-section">
+
+                <mat-icon matBadge={{user_alert_total}} matBadgeColor="warn">home</mat-icon>
+
+              </div>
+            </a>
+          </li>
+
+          <li class="nav-item">
+           <ul class="list-inline">
+<li class="list-inline-item">
+  <span class="material-icons icons " >
+    account_circle
+    </span>
+</li>
+<li class="list-inline-item">
+   <a style="position: relative;
+  top: 0px;" class="nav-link tes" href="javascript:void(0)" tabindex="-1" aria-disabled="true">
+    {{username}}
+  </a>
+</li>
+<li class="list-inline-item">&nbsp;&nbsp;&nbsp;</li>
+
+<button mat-button [matMenuTriggerFor]="menu"><span class="material-icons">
+  menu
+  </span></button>
+<mat-menu #menu="matMenu" class="menu">
+  <button routerLink="/user/user_change" mat-menu-item>
+    <span class="material-icons">
+            key
+            </span>Change Password</button>
+  <button (click)="logout()"  mat-menu-item>
+    <span  class="material-icons">
+    logout
+    </span>  Logout</button>
+</mat-menu>
+
+<!-- <li class="list-inline-item mr-1">
+  <button class="btn btn-primary btn-sm" (click)="logout()"> <span style="    position: relative;
+    top: 2px;" class="material-icons">
+    logout
+    </span>  <span class="out">
+      Logout
+    </span></button>
+</li> -->
+           </ul>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</nav>

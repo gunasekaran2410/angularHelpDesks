@@ -1,0 +1,129 @@
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+          <li class="sidebar-brand text-center">
+              <a class="logo">
+              Helpdesk Admin
+              </a>
+          </li>
+          <li>
+              <a routerLink="/admin/dashboard" routerLinkActive="page_active">
+                <span class="material-icons">
+                  grid_view
+                  </span> <span>Dashboard</span></a>
+          </li>
+          <!-- <li>
+              <a routerLink="/admin/issue_category" routerLinkActive="page_active">
+                <span class="material-icons">
+                  category
+                  </span><span> Issue Category</span></a>
+          </li> -->
+          <li>
+              <a routerLink="/admin/item_master" routerLinkActive="page_active"><span class="material-icons">
+                widgets
+                </span><span>Item Master</span> </a>
+          </li>
+          <li>
+              <a routerLink="/admin/user_registrations" routerLinkActive="page_active">
+                <span class="material-icons">
+                  account_box
+                  </span> <span>User Registration</span> </a>
+          </li>
+          <li>
+            <a routerLink="/admin/report_status" routerLinkActive="page_active">
+              <span class="material-icons">
+                article
+                </span> <span>Report Status</span> </a>
+        </li>
+
+          <li>
+            <a routerLink="/admin/Change_password" routerLinkActive="page_active">
+              <span class="material-icons">
+                key
+                </span> <span>Change Password</span> </a>
+        </li>
+
+        <li>
+          <a routerLink="/admin/issue_entry" routerLinkActive="page_active">
+            <span class="material-icons">
+              person
+              </span> <span>Issue Entry</span> </a>
+      </li>
+
+
+      <li>
+        <a routerLink="/admin/report" routerLinkActive="page_active">
+          <span class="material-icons">
+            summarize
+            </span> <span>Report</span> </a>
+    </li>
+
+      </ul>
+
+
+  </div>
+
+<mat-card>
+  <div class="row">
+    <div class="col-sm-1">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+
+    <button class="btn btn-light" type="button" id="menu-toggle" style="width: 50px;">
+      <span class="material-icons" style="    position: relative;
+      top: 4px;">
+        format_indent_decrease
+        </span>
+
+    </button>
+        </li>
+
+      </ul>
+    </div>
+    <div class="col-sm-11">
+      <ul class="list-inline" style="float: right; margin-bottom: 0;">
+        <li class="list-inline-item">
+          <mat-icon matBadge="{{alert_total}}" class="matfile" matBadgeColor="warn">home</mat-icon>
+          <!-- Include text description of the icon's meaning for screen-readers -->
+          <span class="cdk-visually-hidden">
+            Example with a home icon with overlaid badge showing the number 15
+          </span>
+        </li>
+        <li class="list-inline-item">
+          <span class="material-icons icons " >
+            account_circle
+            </span>
+        </li>
+        <li class="list-inline-item">
+          &nbsp; <div class="nav-link tes" >
+            {{username}}
+          </div>
+        </li>
+        <li class="list-inline-item">&nbsp;&nbsp;&nbsp;</li>
+        <li class="list-inline-item mr-1">
+          <button class="btn btn-primary" (click)="logout()"> <span style="    position: relative;
+            top: 2px;" class="material-icons">
+            logout
+            </span>  <span class="out">
+              Logout
+            </span></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</mat-card>
+
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+      <div class="container-fluid">
+         <router-outlet></router-outlet>
+      </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->

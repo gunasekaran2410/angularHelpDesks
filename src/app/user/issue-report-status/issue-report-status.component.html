@@ -1,0 +1,436 @@
+<div class="help-div">
+
+  <div class="card">
+    <div class="card-header bg-info">
+      <div class="help_title">
+        Report Status
+      </div>
+    </div>
+    <div class="card-body">
+      <form #userReportStatusSubmit="ngForm">
+        <div class="row ">
+          <div class="col-sm-4">
+           <div class="form-group">
+             <label for="label">Issue ID    </label>
+             <input type="text"   name="issueId"
+             [(ngModel)]="issuereport.issueId" class="form-control">
+           </div>
+          </div>
+          <div class="col-sm-4">
+           <div class="form-group">
+             <label for="label">Issue Type
+
+             </label>
+             <select
+             class="form-select"
+
+             name="issueTypeID"
+             [(ngModel)]="issuereport.issueTypeID"
+           >
+             <option *ngFor="let data of userType" [value]="data.id">
+               {{ data.issueTypeName }}
+             </option>
+           </select>
+
+           </div>
+          </div>
+          <div class="col-sm-4">
+           <div class="form-group">
+             <label for="label">Status
+              </label>
+             <select
+             class="form-select"
+
+             name="issueStatusID"
+             [(ngModel)]="issuereport.issueStatusID"
+           >
+             <option *ngFor="let data of issueDataFiles" [value]="data.id">
+               {{ data.issueStatusName }}
+             </option>
+           </select>
+           </div>
+          </div>
+         </div>
+
+         <div class="row  ">
+           <div class="col-sm-4">
+            <div class="form-group">
+              <label for="label">Issue Date</label>
+              <div class="input-group mb-3">
+               <input type="text"
+               class="form-control"
+               name="createdDate"
+               [(ngModel)]="issuereport.createdDate"
+               #dp="bsDatepicker"
+               [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', showWeekNumbers:false }"
+               bsDatepicker
+               [bsValue]="bsValue">
+               <span class="input-group-text"
+                (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen">
+                 <span class="material-icons">
+                   calendar_month
+                   </span>
+               </span>
+             </div>
+            </div>
+           </div>
+           <div class="col-sm-4">
+            <div class="form-group">
+              <label for="label">Dept.Concerned</label>
+              <select
+               class="form-select"
+
+               name="departmentConcernedID"
+               [(ngModel)]="issuereport.departmentConcernedID"
+             >
+               <option *ngFor="let data of department" [value]="data.id">
+                 {{ data.departmentName }}
+               </option>
+             </select>
+            </div>
+           </div>
+           <div class="col-sm-4">
+             <div class="row">
+               <div class="col">
+                 <div class="form-group">
+                   <label for="label">Month</label>
+                   <select class="form-select" name="monthId"  [(ngModel)]="issuereport.monthId">
+                     <option selected value="1">January</option>
+                     <option  value="2">February</option>
+                     <option  value="3">March</option>
+                     <option  value="4">April</option>
+                     <option  value="5">May</option>
+                     <option  value="6">June</option>
+                     <option  value="7">July</option>
+                     <option  value="8">August</option>
+                     <option  value="9">September</option>
+                     <option  value="10">October</option>
+                     <option  value="11">November</option>
+                     <option  value="12">December</option>
+                   </select>
+                 </div>
+               </div>
+               <div class="col">
+                 <div class="form-group">
+                   <label for="label">Year</label>
+                   <div class="input-group mb-3">
+                     <input type="text"
+                     class="form-control"
+                     #dp="bsDatepicker"
+                     name="yearId"  [(ngModel)]="issuereport.yearId"
+                     [bsConfig]="{ dateInputFormat: 'YYYY', showWeekNumbers:false }"
+                     bsDatepicker (onShown)="onOpenCalendarYear($event)"
+                     [bsValue]="bsValue">
+                     <span class="input-group-text"
+                     (onShown)="onOpenCalendarYear($event)" >
+                       <span class="material-icons">
+                         calendar_month
+                         </span>
+                     </span>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+          </div>
+
+          <div class="row">
+           <div class="col-sm-12">
+             <ul class="list-inline pull-right  ">
+              <li class="list-inline-item m_r_25">
+
+                <button class="btn btn-danger" (click)="resetform()">
+                  Clear</button>
+                </li>
+               <li class="list-inline-item " (click)="onsubmit(userReportStatusSubmit)">
+               <button class="btn btn-success">
+                 Filter</button>
+
+               </li>
+
+               </ul>
+
+           </div>
+          </div>
+      </form>
+     <hr>
+     <div class="row">
+      <div class="col-sm-12">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchtext"
+          (change)="searchFilter()">
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">
+              <span class="material-icons">
+                search
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+     <table class="table">
+      <thead class="bg-success">
+        <th>S No</th>
+        <th>
+          Issue ID
+        </th>
+        <th>
+          Issue Date
+        </th>
+
+        <th>
+          Issue Type
+        </th>
+        <th>
+          Issue Details
+        </th>
+        <th>
+         Expected Date
+        </th>
+        <th>
+          Status
+        </th>
+        <th>
+          Remarks
+        </th>
+        <th>
+          View
+        </th>
+<th>
+  Updated Acknowledge
+</th>
+        <th>
+          ReOpen
+        </th>
+
+      </thead>
+      <tbody>
+        <tr  *ngFor="let data of allreportTableData | paginate : { id: 'datas', itemsPerPage: 10, currentPage: page } | filter : searchtextAlt; let i = index">
+          <td>{{ (page - 1) * 10 + i + 1 }}</td>
+          <td>{{data.issueId}}</td>
+          <td>
+            {{data.createdDate | date: 'dd/MM/yyyy hh:mm a' }}
+          </td>
+
+          <td>
+            {{data.issueTypeName}}
+          </td>
+          <td>
+           {{data.issueDescription}}
+          </td>
+          <td>
+            {{data.expectDate | date: 'dd/MM/yyyy' }}
+          </td>
+          <td>
+            <div class="text-success">
+{{data.issueStatusName}}
+            </div>
+          </td>
+          <td>
+            {{data.presentRemarks}}
+           </td>
+          <td>
+            <span class="material-icons cursor" (click)="view(viewDetails, data)"> calendar_month </span>
+          </td>
+<td>
+  <div class="line pags" *ngIf="data.issueStatusName == 'Completed'" (click)="acknowledge_update(acknowledge, data)">
+    Acknowledge
+  </div>
+
+</td>
+          <td>
+            <span *ngIf="data.issueStatusName == 'Completed' " class="material-icons cursor" (click)="reopened_report(reopened, data)">
+              open_in_browser
+              </span>
+          </td>
+          <td>
+
+          </td>
+
+        </tr>
+
+
+      </tbody>
+     </table>
+     <div *ngIf="pagintions_empty" style="text-align: center">
+      <pagination-controls
+        [responsive]="true"
+        (pageChange)="handlePageChange($event)"
+        id="datas"
+        previousLabel="Previous"
+        nextLabel="Next"
+      ></pagination-controls>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- To Update Acknowledge -->
+
+<ng-template #acknowledge>
+  <div class="modal-header bg-primary ">
+    <h4 class="modal-title pull-left">Update Acknowledge</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form  #form_acknowledge="ngForm">
+
+       <div class="form-group">
+         <label for="label"> Remarks <sup>*</sup> </label>
+         <textarea name="presentRemarks"
+         [(ngModel)]="acknowledgeFile.presentRemarks"   rows="4" class="form-control"></textarea>
+       </div>
+       <div class="pull-right">
+<ul class="list-inline">
+  <li class="list-inline-item">
+    <button class="btn btn-success" (click)="acknowledgeUpdate(form_acknowledge)">Update</button>
+    </li>
+<li class="list-inline-item">
+<button class="btn btn-danger" (click)="modalRef?.hide()">Cancel</button>
+</li>
+
+</ul>
+       </div>
+      </form>
+  </div>
+</ng-template>
+
+
+<!-- To Update Reopened -->
+
+<ng-template #reopened>
+  <div class="modal-header bg-primary ">
+    <h4 class="modal-title pull-left">Update Reopened</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form  #reOpened="ngForm">
+
+       <div class="form-group">
+         <label for="label">Present Remarks <sup>*</sup> </label>
+         <textarea name="presentRemarks"
+         [(ngModel)]="reOpen.presentRemarks"   rows="4" class="form-control"></textarea>
+       </div>
+       <div class="pull-right">
+<ul class="list-inline">
+  <li class="list-inline-item">
+    <button class="btn btn-success" (click)="reOpenedUpdate(reOpened)">Update</button>
+    </li>
+<li class="list-inline-item">
+<button class="btn btn-danger" (click)="modalRef?.hide()">Cancel</button>
+</li>
+
+</ul>
+       </div>
+      </form>
+  </div>
+</ng-template>
+
+
+<ng-template #viewDetails>
+  <div class="modal-header bg-primary">
+    <h4 class="modal-title pull-left">View Details</h4>
+    <button type="button" class="close btn-close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+   <div class="row">
+    <div class="col">
+      <table class="table view_table table-bordered">
+        <tbody>
+          <tr>
+            <td>issueId</td><td>{{viewdataFiles.issueId}}</td>
+
+
+          </tr>
+        <tr>
+          <td>createdDate</td><td>{{viewdataFiles.createdDate | date : "dd/MM/yyyy hh:mm a"}}</td>
+        </tr>
+        <tr>
+          <td>createdBy</td><td>{{viewdataFiles.createdBy}}</td>
+        </tr>
+        <tr>
+          <td>issueTypeName</td><td>{{viewdataFiles.issueTypeName}}</td>
+        </tr>
+        <tr>
+          <td>issueDescription</td><td>{{viewdataFiles.issueDescription}}</td>
+        </tr>
+        <tr>
+          <td>imagePath</td><td>
+            <a target="_blank" href="{{viewdataFiles.imagePath}}">{{viewdataFiles.imagePath}}</a>
+          </td>
+        </tr>
+        <tr>
+          <td>issueStatusName</td><td>{{viewdataFiles.issueStatusName}}</td>
+        </tr>
+        <tr>
+          <td>expectDate</td><td>{{viewdataFiles.expectDate | date : "dd/MM/yyyy hh:mm a"}}</td>
+        </tr>
+        <tr>
+          <td>fixedBy</td><td>{{viewdataFiles.fixedBy}}</td>
+        </tr>
+        <tr>
+          <td>fixedDate</td><td>{{viewdataFiles.fixedDate | date : "dd/MM/yyyy hh:mm a"}}</td>
+        </tr>
+        <tr>
+          <td>Issue Item</td><td>{{viewdataFiles.issueItem}}</td>
+        </tr>
+        <tr>
+          <td>FixedImagePath</td><td>
+            <a target="_blank" href="{{viewdataFiles.fixedImagepath}}">{{viewdataFiles.fixedImagepath}}</a>
+            </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <table class="table view_table table-bordered">
+        <tbody>
+          <tr>
+            <td>fixedRemarks</td><td>{{viewdataFiles.fixedRemarks}}</td>
+
+
+          </tr>
+        <tr>
+          <td>rejectedDate</td><td>{{viewdataFiles.rejectedDate | date : "dd/MM/yyyy hh:mm a"}}</td>
+        </tr>
+        <tr>
+          <td>rejectedRemarks</td><td>{{viewdataFiles.rejectedRemarks}}</td>
+        </tr>
+        <tr>
+          <td>reopenedDate</td><td>{{viewdataFiles.reopenedDate | date : "dd/MM/yyyy hh:mm a"}}</td>
+        </tr>
+        <tr>
+          <td>reopenRemarks</td><td>{{viewdataFiles.reopenRemarks}}</td>
+        </tr>
+        <tr>
+          <td>holdDate</td><td>{{viewdataFiles.holdDate | date : "dd/MM/yyyy hh:mm a"}}</td>
+        </tr>
+        <tr>
+          <td>holdRemarks</td><td>{{viewdataFiles.holdRemarks}}</td>
+        </tr>
+        <tr>
+          <td>presentRemarks</td><td>{{viewdataFiles.presentRemarks}}</td>
+        </tr>
+        <tr>
+          <td>adminRemarks</td><td>{{viewdataFiles.adminRemarks}}</td>
+        </tr>
+        <tr>
+          <td>acknowledgeDate</td><td>{{viewdataFiles.acknowledgeDate | date : "dd/MM/yyyy hh:mm a"}}</td>
+        </tr>
+        <tr>
+          <td>Replace Item</td><td>{{viewdataFiles.replacedItem}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+   </div>
+  </div>
+</ng-template>

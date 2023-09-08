@@ -1,0 +1,68 @@
+.help-div{
+  padding: 1rem;
+
+}
+.help-div .help_title{
+  font-size: 18px;
+    font-weight: 600;
+    /* color: #444; */
+    color: #fff;
+    padding: 1rem 0;
+}
+.bg-info {
+  background-color: rgb(24, 144, 255) !important;
+}
+.mat-form-field{
+  width: 100%;
+}
+
+
+table tbody tr td{
+  vertical-align: middle;
+}
+sup{
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  top: -2px;
+}
+.card-body{
+  padding: 2rem;
+}
+.padding{
+  padding: 1rem;
+}
+.m_r_25{
+  margin-right: 25px;
+}
+button span{
+  position: relative;
+  top: 5px;
+  padding-right: 10px;
+}
+.pull-right{
+  float: right;
+}
+table thead th{
+  color: #fff;
+    padding: 1rem;
+}
+table thead th, tbody tr td  {
+  vertical-align: middle;
+  text-align: center;
+}
+.bg-primary h4{
+  color: white;
+}
+.btn-close{
+  background: transparent url('../../../assets/img/close.svg') center/1em auto no-repeat;
+  opacity: 1;
+}
+.view_table tbody tr td:nth-child(2){
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.view_table tbody tr td:nth-child(1){
+  text-align: left;
+  text-transform: capitalize;
+}

@@ -1,0 +1,49 @@
+.help-div{
+  padding: 1rem;
+
+}
+.help-div .help_title{
+  font-size: 18px;
+    font-weight: 600;
+    /* color: #444; */
+    color: #fff;
+    padding: 1rem 0;
+}
+.bg-info {
+  background-color: rgb(24, 144, 255) !important;
+}
+.mat-form-field{
+  width: 100%;
+}
+
+table tbody tr td:nth-child(1){
+  vertical-align: middle;
+    font-size: 18px;
+    font-weight: 500;
+}
+table tbody tr td{
+  vertical-align: middle;
+}
+sup{
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  top: -2px;
+}
+.card-body{
+  padding: 2rem;
+}
+.padding{
+  padding: 1rem;
+}
+.m_r_25{
+  margin-right: 25px;
+}
+button span{
+  position: relative;
+  top: 5px;
+  padding-right: 10px;
+}
+.text-right{
+  text-align: right;
+}

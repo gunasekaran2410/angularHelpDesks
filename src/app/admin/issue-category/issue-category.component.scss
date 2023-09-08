@@ -1,0 +1,43 @@
+
+
+.card_title{
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 10px 0;
+}
+.form-group label {
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: capitalize;
+  padding-bottom: 5px;
+}
+.m_r_25{
+  margin-right: 25px;
+}
+.mrg{
+  margin: 1rem 0;
+}
+
+.pull-right{
+  float: right;
+}
+table thead th{
+  padding: 10px;
+  color: #fff;
+  text-transform: capitalize;
+  vertical-align: middle;
+}
+table{
+  background-color: #fff;
+}
+table tbody tr td {
+  vertical-align: middle;
+}
+ul{
+  margin-bottom: 0;
+}
+body{
+  background-image: url("../../../assets/img/bg.jpg");
+  background-size: cover;
+}

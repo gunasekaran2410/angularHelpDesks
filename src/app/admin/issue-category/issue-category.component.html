@@ -1,0 +1,126 @@
+<div class="card_title">Issue Category </div>
+
+<div class="card">
+
+  <div class="card-body">
+    <form #issueCategorySubmit="ngForm">
+
+      <input type="hidden" name="id" [(ngModel)]="issueCategory.id" />
+
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label for="label">Category Name</label>
+        <input type="text" name="issueTypeName"
+        [(ngModel)]="issueCategory.issueTypeName" class="form-control">
+
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="form-group">
+        <label for="label">Description</label>
+        <textarea type="text" rows="2"  name="descriptions"
+        [(ngModel)]="issueCategory.descriptions"  class="form-control"></textarea>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+<div class="col-sm-3">
+  <mat-checkbox name="isActive"
+  [(ngModel)]="issueCategory.isActive" >IsActive </mat-checkbox>
+</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="list-inline pull-right form_btn" *ngIf="submit == true">
+        <li class="list-inline-item m_r_25">
+          <button class="btn btn-danger" (click)="oncancel()">
+            Cancel
+          </button>
+        </li>
+        <li class="list-inline-item">
+          <button
+            class="btn btn-success"
+            (click)="onsubmit(issueCategorySubmit)"
+          >
+            &nbsp; Submit
+          </button>
+        </li>
+      </ul>
+      <ul class="list-inline pull-right form_btn" *ngIf="submit == false">
+        <li class="list-inline-item m_r_25">
+          <button class="btn btn-danger" (click)="oncancel()">
+            Cancel
+          </button>
+        </li>
+        <li class="list-inline-item">
+          <button
+            class="btn btn-success"
+            (click)="update(issueCategorySubmit)"
+          >
+             Update
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</form>
+  </div>
+</div>
+<hr>
+<!-- <div class="row">
+
+  <div class="col-sm-12">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchtext">
+      <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2">
+          <span class="material-icons">
+            search
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div> -->
+<table class="table">
+  <thead class="bg-primary">
+    <th>
+      Category Name
+    </th>
+    <th>
+      Description
+    </th>
+    <th>
+      Actions
+    </th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of allcategoryTableData | filter:searchtext;let i=index;">
+      <td>{{data.issueTypeName}}</td>
+      <td>Browser application bundle generation complete.</td>
+      <td>
+        <ul class="list-inline ">
+          <li class="list-inline-item m_r_25">
+            <button class="btn btn-warning btn-sm" (click)="edit(data)">
+              <span class="material-icons">
+                edit
+                </span>
+              </button>
+                    </li>
+          <li class="list-inline-item">
+  <button class="btn btn-success btn-sm " (click)="deleteFile(data)">
+    <span class="material-icons">
+      delete
+      </span>
+    </button>
+          </li>
+
+        </ul>
+      </td>
+    </tr>
+
+  </tbody>
+</table>

@@ -1,0 +1,106 @@
+.card {
+  margin-bottom: 1.5rem;
+  -webkit-box-shadow: 0 1px 2px rgb(56 65 74 / 15%);
+  box-shadow: 0 1px 2px rgb(56 65 74 / 15%);
+}
+.card-body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+
+}
+.align-items-center {
+  -webkit-box-align: center!important;
+  -ms-flex-align: center!important;
+  align-items: center!important;
+}
+.d-flex {
+  display: -webkit-box!important;
+  display: -ms-flexbox!important;
+  display: flex!important;
+}
+.flex-grow-1 {
+  -webkit-box-flex: 1!important;
+  -ms-flex-positive: 1!important;
+  flex-grow: 1!important;
+}
+.fw-medium {
+  font-weight: 500;
+  color: white;
+}
+.text-muted {
+  --vz-text-opacity: 1;
+  color: #878a99!important;
+}
+.flex-shrink-0 {
+  -ms-flex-negative: 0!important;
+  flex-shrink: 0!important;
+}
+.fs-14 {
+  font-size: 14px!important;
+}
+.mt-4 {
+  margin-top: 1.5rem!important;
+}
+.avatar-sm {
+  height: 3rem;
+  width: 3rem;
+}
+.bg-soft-success {
+  background-color: rgba(10,179,156,.18)!important;
+}
+.bx {
+  font-family: boxicons!important;
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+  display: inline-block;
+  text-transform: none;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+canvas{
+  height: 100%;
+  width: 100%;
+}
+
+.fs-14 span{
+  font-size: 31px;
+  color: #fff;
+}
+h4, .h4 {
+  font-size: 2rem;
+}
+.counter-value{
+  color: #fff;
+}
+.card_1{
+  background-image: linear-gradient(to right,#8845f5 0,#aa7af8 100%)!important;
+}
+.card_2{
+  background-image: linear-gradient(to right, orange 0, orange 100%) !important;
+}
+
+.card_3{
+  background: linear-gradient(to top, #2556cc, #4785fc);
+}
+
+.card_4{
+
+  background-image: linear-gradient(to right,#ff4081 0,#ff4081 100%)!important;
+}
+
+.card_5{
+
+  background-image: linear-gradient(to right,#1aa57c 0,#20c997 100%)!important;
+}
+.card_6{
+  background: #0f0c29;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #cc3399, #cc3399, #cc3399);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #cc3399, #cc3399, #cc3399); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+

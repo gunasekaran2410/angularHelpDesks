@@ -1,0 +1,125 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Public Sans", sans-serif;}
+
+/* Importing Bootstrap SCSS file. */
+@import "bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+@import "node_modules/bootstrap/scss/mixins" ;
+@import '~ngx-toastr/toastr.css';
+@import url('../node_modules/fontawesome-4.7/css/font-awesome.min.css');
+@import url('../node_modules/animate.css/animate.css');
+
+// ::ng-deep .toast-top-center {
+//   top: 50% !important;
+// }
+
+// .toast-top-center {
+//   top: 30px !important;
+// }
+
+body {
+  margin: 0px;
+  color: rgb(38, 38, 38);
+  font-weight: 400;
+  background-color: rgb(250, 250, 251);
+}
+.navbar{
+  background-color: #fff !important;
+}
+.form-group{
+  margin-bottom: 1.5rem;
+}
+.form-group label{
+  font-weight: 600;
+    font-size: 17px;
+    text-transform: capitalize;
+    padding-bottom: 5px;
+}
+// button{
+//   width: 100px;
+// }
+sup {
+  top: 0 !important;
+  color: red;
+  font-size: 18px;
+}
+.modal {
+  padding-right: 0px !important;
+}
+.line{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.cursor{
+  cursor: pointer;
+}
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+[type=text].form-control:focus,
+[type=password].form-control:focus,
+[type=email].form-control:focus,
+[type=tel].form-control:focus,
+[contenteditable].form-control:focus {
+  box-shadow: inset 0 -1px 0 #ddd;
+}
+.pags{
+
+  color: black;
+  text-decoration: underline;
+    cursor: pointer;
+    background: linear-gradient(to right, hsl(208, 94%, 49%) 0, hsl(216, 71%, 47%) 10%, hsl(242, 98%, 33%) 20%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+  }
+
+  @keyframes shine {
+    0% {
+      background-position: 0;
+    }
+    60% {
+      background-position: 150px;
+    }
+    100% {
+      background-position: 150px;
+    }
+  }
+
+  .pags1{
+
+    color: black;
+      cursor: pointer;
+      background: linear-gradient(to right, hsl(208, 94%, 49%) 0, hsl(216, 71%, 47%) 10%, hsl(242, 98%, 33%) 20%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s infinite linear;
+      text-decoration: underline;
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: 0;
+      }
+      60% {
+        background-position: 100px;
+      }
+      100% {
+        background-position: 100px;
+      }
+    }
+.input-group-append{
+  cursor: pointer;
+}
+.toast-top-center{
+  top:50% !important;
+  right:50% !important;
+}

@@ -1,0 +1,243 @@
+<div class="card_title">User Registration  </div>
+
+<div class="card">
+
+  <div class="card-body">
+   <form #userRegistrationSubmit="ngForm">
+    <!-- <input type="hidden" name="id"  [(ngModel)]="userRegistartion.id"> -->
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="label">Department <sup class="text-danger">*</sup>  </label>
+
+          <select
+          class="form-select"
+
+          name="departmentID"
+          [(ngModel)]="userRegistartion.departmentID"
+        >
+          <option *ngFor="let data of department" [value]="data.id">
+            {{ data.departmentName }}
+          </option>
+        </select>
+
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="label">User Type <sup class="text-danger">*</sup> </label>
+
+          <select
+          class="form-select"
+
+          name="userTypeID"
+          [(ngModel)]="userRegistartion.userTypeID"
+        >
+          <option *ngFor="let data of userType" [value]="data.id">
+            {{ data.userTypeName }}
+          </option>
+        </select>
+
+        </div>
+      </div>
+
+      <!-- <div class="col-sm-3">
+        <div class="form-group">
+          <label for="label">System Name <sup class="text-danger">*</sup> </label>
+          <select class="form-select" name="itemDetailID"
+          [(ngModel)]="userRegistartion.itemDetailID" (change)="systemChange($event)"
+        >
+          <option *ngFor="let data of systemNames" [value]="data.id">
+            {{ data.itemName }}
+          </option>
+        </select>
+
+       <p class="text-danger" *ngIf="staus_itemdetails_show">{{itemdetails_result}}</p>
+        </div>
+      </div> -->
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="label">User Code</label>
+          <input type="text" (change)="check_empCode($event)" name="empCode" [(ngModel)]="userRegistartion.empCode" class="form-control">
+           <p class="text-danger"  *ngIf="staus_emp_show" class="text-danger">{{data_result}}</p>        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="label">User Name <sup class="text-danger">*</sup></label>
+          <input type="text" class="form-control" name="empName" [(ngModel)]="userRegistartion.empName">
+
+        </div>
+      </div>
+
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="label">Password <sup class="text-danger">*</sup></label>
+          <input type="password" class="form-control" name="passwrd" [(ngModel)]="userRegistartion.passwrd">
+
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="label">Mail Id </label>
+          <input type="email" class="form-control" name="emailIdoff" [(ngModel)]="userRegistartion.emailIdoff">
+
+        </div>
+      </div>
+
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="label">Mobile Number</label>
+          <input type="text" (keypress)="numberOnly($event)" class="form-control" name="mobileNoOff" [(ngModel)]="userRegistartion.mobileNoOff">
+
+        </div>
+      </div>
+
+
+
+
+
+      <div class="col-sm-3">
+        <br>
+        <mat-checkbox name="isActive" (click)='toggle()' [(ngModel)]="userRegistartion.isActive">Is-Active </mat-checkbox>
+      </div>
+
+
+
+
+
+
+
+
+      <div class="col-sm-9" [hidden]='!isHidden'>
+        <div class="form-group">
+          <label for="label">Reason for De-Active </label>
+          <textarea type="text" name="relievedreason" [(ngModel)]="userRegistartion.relievedreason" rows="2" class="form-control"></textarea>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="list-inline pull-right form_btn" *ngIf="submit == true">
+          <li class="list-inline-item m_r_25">
+            <button
+              class="btn btn-success"
+              (click)="onsubmit(userRegistrationSubmit)"
+            >
+              Submit
+            </button>
+          </li>
+          <li class="list-inline-item">
+            <button class="btn btn-danger" (click)="oncancel()">
+              Cancel
+            </button>
+          </li>
+
+        </ul>
+        <ul class="list-inline pull-right form_btn" *ngIf="submit == false">
+
+          <li class="list-inline-item m_r_25">
+            <button
+              class="btn btn-success"
+              (click)="update(userRegistrationSubmit)"
+            >
+              Update
+            </button>
+          </li>
+            <li class="list-inline-item ">
+            <button class="btn btn-danger" (click)="oncancel()">
+              Cancel
+            </button>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+   </form>
+  </div>
+</div>
+<hr>
+
+<div class="row">
+
+  <div class="col-sm-10">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchtext"
+      (change)="searchFilter()">
+      <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2">
+          <span class="material-icons">
+            search
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2 text-center">
+    <button class="btn btn-primary" (click)="exceldownload()">
+
+      Excel Download</button>
+
+  </div>
+</div>
+
+<div >
+  <table class="table" id="excel-table">
+    <thead class="bg-primary">
+      <th>S.No</th>
+      <th>
+        User
+      </th>
+      <th>
+        User Type
+      </th>
+      <th>System Name</th>
+      <th> Spares</th>
+      <th>
+        Actions
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of alluserDetails | filter:searchtextAlt | paginate: { id: 'datas', itemsPerPage: 10, currentPage: page } let i=index;">
+        <td>{{(page - 1) * 10 + i+1}}</td>
+        <td>{{data.employeeName}}</td>
+        <td>{{data.userTypeName}}</td>
+        <td>{{data.itemName}}</td>
+        <td>{{data.refItemName}}</td>
+        <td>
+          <ul class="list-inline ">
+            <li class="list-inline-item m_r_25">
+              <button class="btn btn-warning btn-sm" (click)="onedit(data)">
+                <span class="material-icons">
+                  edit
+                  </span>
+                </button>
+                      </li>
+            <li class="list-inline-item">
+    <button class="btn btn-success btn-sm " (click)="ondelete(data)">
+      <span class="material-icons">
+        delete
+        </span>
+      </button>
+            </li>
+
+          </ul>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+<div *ngIf="pagintions_empty"  style="text-align: center;">
+
+  <pagination-controls [responsive]="true" (pageChange)="handlePageChange($event)"
+   id="datas" previousLabel="Previous" nextLabel="Next"></pagination-controls>
+  </div>

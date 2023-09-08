@@ -1,0 +1,372 @@
+<div class="card_title">Item Master</div>
+
+<div class="card">
+  <div class="card-body">
+    <form #itemMasterSubmit="ngForm">
+      <!-- <input type="hidden" name="id" [(ngModel)]="itemMaster.id" /> -->
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="label"
+              >Issue Category <sup class="text-danger">*</sup>
+            </label>
+
+            <select
+              class="form-select"
+              name="issueTypeID"
+              [(ngModel)]="itemMaster.issueTypeID"
+            >
+              <option *ngFor="let data of issueCategory" [value]="data.id">
+                {{ data.issueTypeName }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="label"
+              >Item Type <sup class="text-danger">*</sup>
+            </label>
+
+            <select
+              class="form-select"
+              name="itemTypeID"
+              [(ngModel)]="itemMaster.itemTypeID" (change)="typeChange($event)"
+            >
+              <option *ngFor="let data of itemTypes" [value]="data.id">
+                {{ data.itemTypeName }}
+              </option>
+
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-3" *ngIf="system_name">
+          <div class="form-group">
+            <label for="label">System Name </label>
+            <select
+              class="form-select"
+              name="refItemID"
+              [(ngModel)]="itemMaster.refItemID"
+            >
+              <option *ngFor="let data of systemNames" [value]="data.id">
+                {{ data.itemName }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="label">Item Name <sup class="text-danger">*</sup></label>
+            <input
+              type="text"
+              class="form-control"
+              (change)="itemName($event)"
+              name="itemName"
+              [(ngModel)]="itemMaster.itemName"
+            />
+            <p *ngIf="item_show" class="text-danger">{{data_result}}</p>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="label">Item Serial Number</label>
+            <input
+              type="text"
+
+              name="serialNo"
+              [(ngModel)]="itemMaster.serialNo"
+              class="form-control"
+            />
+            <p *ngIf="serial_no" class="text-danger">{{data_result_serial_no}}</p>
+          </div>
+        </div>
+
+        <div class="col-sm-9">
+          <div class="form-group">
+            <label for="label">Item Description</label>
+            <textarea
+              type="text"
+              name="itemDescription"
+              [(ngModel)]="itemMaster.itemDescription"
+              rows="2"
+              class="form-control"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <mat-checkbox
+            style="margin-top: 30px"
+            name="isWarranty"
+            [(ngModel)]="itemMaster.isWarranty"
+          >
+            IsWarranty
+          </mat-checkbox>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="label">Brand Name </label>
+
+
+            <input
+            type="text"
+            name="brandName"
+            [(ngModel)]="itemMaster.brandName"
+            class="form-control"
+          />
+
+            <!-- <select
+              class="form-select"
+              name="brandName"
+              [(ngModel)]="itemMaster.brandName"
+            >
+              <option
+                *ngFor="let data of brandNames; let i = index"
+                [value]="data"
+              >
+                {{ data }}
+              </option>
+            </select> -->
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="label">Warranty Months</label>
+            <input
+              type="text"
+              class="form-control"
+              name="warrantyMonths" (keypress)="numberOnly($event)"
+              [(ngModel)]="itemMaster.warrantyMonths"
+            />
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="label">Purchase No</label>
+            <input
+              type="text"
+              name="purchaseNo"
+              [(ngModel)]="itemMaster.purchaseNo"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="label">Purchase Date</label>
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                name="purchaseDate"
+                [(ngModel)]="itemMaster.purchaseDate"
+                #dp="bsDatepicker"
+                [bsConfig]="{
+                  dateInputFormat: 'DD-MM-YYYY',
+                  showWeekNumbers: false
+                }"
+                bsDatepicker
+                [bsValue]="bsValue"
+              />
+              <span
+                class="input-group-text"
+                (click)="dp.toggle()"
+                [attr.aria-expanded]="dp.isOpen"
+              >
+                <span class="material-icons"> calendar_month </span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="label">Supplier</label>
+            <input
+              type="text"
+              name="supplier"
+              [(ngModel)]="itemMaster.supplier"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group" >
+            <label for="label">User Name </label>
+            <select
+              class="form-select"
+              name="idUser"
+              [(ngModel)]="itemMaster.idUser"
+            >
+              <option *ngFor="let data of alluserDetails" [value]="data.id">
+                {{ data.empName
+                }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <mat-checkbox
+            style="margin-top: 35px"
+            name="isActive" (click)='toggle()'
+            [(ngModel)]="itemMaster.isActive"
+            >Is-Active
+          </mat-checkbox>
+        </div>
+
+        <div class="col-sm-6" [hidden]='!isHidden'>
+          <div class="form-group">
+            <label for="label">Reason for De-Active </label>
+            <textarea
+              type="text"
+              name="deActiveReason"
+              [(ngModel)]="itemMaster.deActiveReason"
+              rows="2"
+              class="form-control"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="list-inline pull-right form_btn" *ngIf="submit == true">
+
+            <li class="list-inline-item m_r_25">
+              <button
+                class="btn btn-success"
+                (click)="onsubmit(itemMasterSubmit)"
+              >
+              Submit
+              </button>
+            </li>
+            <li class="list-inline-item ">
+              <button class="btn btn-danger" (click)="oncancel()">
+                Cancel
+              </button>
+            </li>
+          </ul>
+          <ul class="list-inline pull-right form_btn" *ngIf="submit == false">
+
+            <li class="list-inline-item m_r_25">
+              <button
+                class="btn btn-success"
+                (click)="update(itemMasterSubmit)"
+              >
+                Update
+              </button>
+            </li>
+            <li class="list-inline-item ">
+              <button class="btn btn-danger" (click)="oncancel()">
+                Cancel
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<hr />
+<div class="row">
+
+  <div class="col-sm-4">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchtext"
+      (change)="searchFilter()">
+      <div class="input-group-append" (click)="searchFilter()">
+        <span class="input-group-text" id="basic-addon2">
+          <span class="material-icons">
+            search
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+  <div class="form-group">
+
+    <select
+    class="form-select"
+    name="selectItem"
+    (change)="selectType_name()"
+    [(ngModel)]="selectItem"
+  >
+  <option value="">Select Item name</option>
+    <option *ngFor="let data of systemNames" [value]="data.id">
+      {{ data.itemName }}
+    </option>
+  </select>
+
+  </div>
+  </div>
+  <div class="col-sm-2">
+    <button class="btn btn-success" (click)="clearSystemName()">Clear System Name</button>
+  </div>
+  <div class="col-sm-2 text-center">
+    <button class="btn btn-primary" (click)="exceldownload()">
+
+      Excel Download</button>
+
+  </div>
+</div>
+
+
+<table class="table">
+  <thead class="bg-primary">
+    <th>S.No</th>
+    <th>Issue Category</th>
+    <th>User Name</th>
+    <th>System Name</th>
+    <th>Item Type</th>
+    <th>Item Name</th>
+    <th>Item Description</th>
+    <th>Active</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of searchItemTableData | filter:searchtextAlt |  paginate: { itemsPerPage: 10, currentPage: page , id: 'foo2'} let i=index;">
+      <td>{{(page - 1) * 10 + i+1}}</td>
+      <td>{{ data.issueTypeName }}</td>
+      <td>{{data.userName}}</td>
+      <td>{{data.refItemName}}</td>
+      <td>{{ data.itemTypeName }}</td>
+      <td>{{ data.itemName }}</td>
+      <td> {{data.itemDescription}}</td>
+      <td>{{data.isActive}}</td>
+      <td>
+        <ul class="list-inline">
+          <li class="list-inline-item m_r_25">
+            <button class="btn btn-warning btn-sm" (click)="onedit(data)">
+              <span class="material-icons"> edit </span>
+            </button>
+          </li>
+          <li class="list-inline-item">
+            <button class="btn btn-success btn-sm" (click)="ondelete(data)">
+              <span class="material-icons"> delete </span>
+            </button>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="pagintions_empty"  style="text-align: center;">
+
+
+
+  <pagination-controls (pageChange)="page = $event" id="foo2" [maxSize]="10"
+                                                [directionLinks]="true" [autoHide]="true" [responsive]="true"
+                                                previousLabel="Previous" nextLabel="Next"
+                                                screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+                                                screenReaderCurrentLabel="You're on page"></pagination-controls>
+</div>
